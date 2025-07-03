@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sailability South Africa - Sailing for Everyone</title>
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-gold: #fbbf24;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --focus-color: #fbbf24;
+            --error-color: #dc2626;
+            --success-color: #059669;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Enhanced font and text settings for readability */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-primary);
+            font-size: 18px;
+            background: var(--white);
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --text-primary: #000000;
+                --text-secondary: #000000;
+                --primary-blue: #000080;
+                --bg-light: #ffffff;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Skip navigation link */
+        .skip-nav {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--focus-color);
+            color: var(--primary-blue);
+            padding: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            z-index: 10000;
+            font-size: 16px;
+        }
+
+        .skip-nav:focus {
+            top: 6px;
+        }
+
+        /* Accessibility toolbar */
+        .accessibility-toolbar {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 1rem;
+            z-index: 1001;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            display: none;
+        }
+
+        .accessibility-toolbar.show {
+            display: block;
+        }
+
+        .accessibility-toggle {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1002;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-toggle:hover,
+        .accessibility-toggle:focus {
+            background: var(--secondary-blue);
+            transform: scale(1.1);
+        }
+
+        .toolbar-option {
+            display: block;
+            width: 100%;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 1px solid var(--primary-blue);
+            background: var(--white);
+            color: var(--primary-blue);
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .toolbar-option:hover,
+        .toolbar-option:focus {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Font size controls */
+        body.large-text {
+            font-size: 22px;
+        }
+
+        body.extra-large-text {
+            font-size: 26px;
+        }
+
+        /* High contrast mode */
+        body.high-contrast {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        body.high-contrast .hero {
+            background: #000080 !important;
+        }
+
+        body.high-contrast .hero-content {
+            background: rgba(0, 0, 0, 0.9) !important;
+            border: 2px solid #ffffff;
+        }
+
+        body.high-contrast .btn {
+            background: #ffff00;
+            color: #000000;
+            border: 2px solid #ffffff;
+        }
+
+        body.high-contrast .nav-links a {
+            color: #ffffff;
+        }
+
+        body.high-contrast .section-title {
+            color: #ffffff;
+        }
+
+        body.high-contrast .sv14-partnership {
+            background: #000000;
+            border-color: #ffffff;
+        }
+
+        body.high-contrast .partnership-text {
+            color: #ffffff;
+        }
+
+        body.high-contrast .sv14-logo-placeholder {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ff0000;
+        }
+
+        body.high-contrast .sv14-logo-placeholder::after {
+            color: #ff0000;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "⛵";
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fbbf24;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.6), rgba(59, 130, 246, 0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%2387CEEB;stop-opacity:1" /><stop offset="100%" style="stop-color:%234169E1;stop-opacity:1" /></linearGradient><linearGradient id="mountain" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23708090;stop-opacity:1" /><stop offset="100%" style="stop-color:%23483D8B;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23water)" width="1200" height="600"/><polygon fill="url(%23mountain)" points="200,100 400,80 600,120 800,90 1000,110 1200,100 1200,300 0,300"/><path d="M0,400 Q300,350 600,400 T1200,400 L1200,600 L0,600 Z" fill="%232E8B57" opacity="0.3"/><circle cx="1000" cy="80" r="40" fill="%23FFD700"/><g transform="translate(300,250)"><polygon fill="%23FFFFFF" points="0,0 20,50 -20,50"/><line x1="0" y1="0" x2="0" y2="60" stroke="%23654321" stroke-width="2"/></g><g transform="translate(500,270)"><polygon fill="%23FFFFFF" points="0,0 15,40 -15,40"/><line x1="0" y1="0" x2="0" y2="50" stroke="%23654321" stroke-width="2"/></g><g transform="translate(700,260)"><polygon fill="%23FFFFFF" points="0,0 18,45 -18,45"/><line x1="0" y1="0" x2="0" y2="55" stroke="%23654321" stroke-width="2"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(30, 58, 138, 0.3), rgba(59, 130, 246, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            background: rgba(30, 58, 138, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #fbbf24;
+            color: #1e3a8a;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1e3a8a;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3a8a;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8fafc;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #3b82f6, #1e3a8a);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #3b82f6;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .program-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .program-card p {
+            margin-bottom: 1.5rem;
+            color: #64748b;
+        }
+
+
+
+        /* Get Involved Section */
+        .get-involved-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .involvement-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .involvement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .involvement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8fafc;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            color: #3b82f6;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            min-height: 44px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input:invalid,
+        .form-group textarea:invalid {
+            border-color: var(--error-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--error-color);
+            font-weight: bold;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .help-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .form-status.success {
+            background: #d1fae5;
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+            display: block;
+        }
+
+        .form-status.error {
+            background: #fee2e2;
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+            display: block;
+        }
+
+        /* Screen reader only content */
+        .form-group input.error,
+        .form-group textarea.error,
+        .form-group select.error {
+            border-color: var(--error-color);
+            background-color: #fef2f2;
+        }
+
+        .contact-info a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover,
+        .contact-info a:focus {
+            color: var(--secondary-blue);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .accessibility-statement {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .accessibility-statement a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .accessibility-statement a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                background-attachment: scroll; /* Fix for mobile parallax issues */
+                min-height: 100vh;
+            }
+
+            .hero-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
+            /* Improved touch targets for mobile */
+            .btn {
+                min-height: 48px;
+                min-width: 48px;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .nav-links a {
+                min-height: 48px;
+                min-width: 48px;
+            }
+
+            .accessibility-toggle {
+                width: 56px;
+                height: 56px;
+                font-size: 20px;
+            }
+
+            .accessibility-toolbar {
+                right: 10px;
+                left: 10px;
+                width: auto;
+            }
+
+            /* Larger text on mobile for better readability */
+            body {
+                font-size: 19px;
+                line-height: 1.9;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            /* Form improvements for mobile */
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                min-height: 48px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .get-involved-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Enhanced focus indicators for better visibility */
+        button:focus,
+        a:focus,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 3px;
+            box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Improved button accessibility */
+        .btn {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .btn:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn:focus {
+            outline: 3px solid var(--primary-blue);
+            outline-offset: 3px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* Enhanced navigation accessibility */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:focus {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 1rem;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: calc(100% - 2rem);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    
+    <!-- Accessibility Toolbar Toggle -->
+    <button class="accessibility-toggle" aria-label="Open accessibility options" title="Accessibility Options">
+        ♿
+    </button>
+    
+    <!-- Accessibility Toolbar -->
+    <div class="accessibility-toolbar" role="dialog" aria-labelledby="accessibility-title" aria-hidden="true">
+        <h3 id="accessibility-title">Accessibility Options</h3>
+        <button class="toolbar-option" onclick="increaseFontSize()" aria-label="Increase text size">
+            🔍+ Larger Text
+        </button>
+        <button class="toolbar-option" onclick="decreaseFontSize()" aria-label="Decrease text size">
+            🔍- Smaller Text
+        </button>
+        <button class="toolbar-option" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
+            ⚫ High Contrast
+        </button>
+        <button class="toolbar-option" onclick="resetAccessibility()" aria-label="Reset all accessibility settings">
+            🔄 Reset
+        </button>
+        <button class="toolbar-option" onclick="toggleToolbar()" aria-label="Close accessibility options">
+            ✖ Close
+        </button>
+    </div>
+
+    <!-- Header and Navigation -->
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="logo">
+                <span aria-hidden="true">⛵</span>
+                <span>Sailability South Africa</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" aria-label="Go to home section">Home</a></li>
+                <li><a href="#about" aria-label="Go to about section">About</a></li>
+                <li><a href="#programs" aria-label="Go to programs section">Programs</a></li>
+                <li><a href="#get-involved" aria-label="Go to get involved section">Get Involved</a></li>
+                <li><a href="#contact" aria-label="Go to contact section">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-heading" role="img" aria-label="SV14 accessible sailing boats on the water with Cape Town's Table Mountain in the background">
+            <div class="hero-content">
+                <h1 id="hero-heading">Sailing for Everyone</h1>
+                <p class="hero-description">Empowering people with disabilities to experience the freedom and joy of sailing on South Africa's beautiful waters.</p>
+                <div class="cta-buttons" role="group" aria-label="Main action buttons">
+                    <a href="#programs" class="btn" aria-describedby="programs-desc">
+                        Explore Programs
+                        <span id="programs-desc" class="sr-only">Learn about our accessible sailing programs</span>
+                    </a>
+                    <a href="#get-involved" class="btn btn-secondary" aria-describedby="involve-desc">
+                        Get Involved
+                        <span id="involve-desc" class="sr-only">Find ways to volunteer or support our mission</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="section-container">
+                <h2 id="about-heading" class="section-title">About Sailability South Africa</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p><strong>Sailability South Africa</strong> is dedicated to providing safe, enjoyable, and accessible sailing experiences for people with physical, intellectual, and sensory disabilities. Founded on the belief that sailing should be available to everyone, we work to break down barriers and create opportunities for individuals to experience the transformative power of being on the water.</p>
+                        
+                        <p>Our specially adapted boats and trained volunteers ensure that participants can sail safely while building confidence, developing new skills, and forming lasting friendships. We sail with SV14 boats, specifically designed for accessible sailing - you can learn more about these innovative vessels at <a href="https://www.sv14.org" target="_blank" rel="noopener noreferrer" aria-label="Visit SV14 website (opens in new tab)">www.sv14.org</a>. For now we only sail at Milnerton Aquatic Club Cape Town, but we are working on additional launching spots in South Africa.</p>
+                        
+                        <div class="sv14-partnership">
+                            <div class="sv14-logo-placeholder">SV14</div>
+                            <p class="partnership-text">We're proud to use SV14 boats - purpose-built for accessible sailing</p>
+                        </div>
+                        
+                        <p>Whether you're looking to try sailing for the first time, develop competitive sailing skills, or simply enjoy recreational time on the water, Sailability South Africa welcomes you aboard.</p>
+                    </div>
+                    <div class="about-image" role="img" aria-label="Decorative sailing themed illustration with ocean waves, sailboat, and South African flag">
+                        <span aria-hidden="true">🌊⛵🇿🇦</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="programs" aria-labelledby="programs-heading">
+            <div class="section-container">
+                <h2 id="programs-heading" class="section-title">Our Programs</h2>
+                <div class="programs-grid" role="list" aria-label="Available sailing programs">
+                    <article class="program-card" role="listitem">
+                        <h3>Learn to Sail</h3>
+                        <p>Beginner-friendly sailing lessons designed specifically for people with disabilities. Our certified instructors provide personalized guidance using specially adapted equipment.</p>
+                        <a href="#contact" class="btn" aria-label="Learn more about Learn to Sail program">Learn More</a>
+                    </article>
+                    
+                    <article class="program-card" role="listitem">
+                        <h3>Recreation Sailing</h3>
+                        <p>Regular recreational sailing sessions for all skill levels. Enjoy the therapeutic benefits of being on the water while socializing with fellow sailing enthusiasts.</p>
+                        <a href="#contact" class="btn" aria-label="Join our Recreation Sailing program">Join Today</a>
+                    </article>
+                    
+                    <article class="program-card" role="listitem">
+                        <h3>Competitive Sailing</h3>
+                        <p>Training and competition opportunities for sailors looking to develop racing skills and participate in national and international sailing competitions.</p>
+                        <a href="#contact" class="btn" aria-label="Get started with Competitive Sailing">Get Started</a>
+                    </article>
+                    
+                    <article class="program-card" role="listitem">
+                        <h3>Youth Development</h3>
+                        <p>Specialized programs for young people with disabilities, focusing on skill development, confidence building, and leadership opportunities.</p>
+                        <a href="#contact" class="btn" aria-label="Discover more about Youth Development program">Discover More</a>
+                    </article>
+                    
+                    <article class="program-card" role="listitem">
+                        <h3>Family Sailing</h3>
+                        <p>Inclusive sailing experiences designed for families, allowing family members to enjoy the water together regardless of ability levels.</p>
+                        <a href="#contact" class="btn" aria-label="Book a Family Sailing session">Book Session</a>
+                    </article>
+                    
+                    <article class="program-card" role="listitem">
+                        <h3>Adaptive Technology</h3>
+                        <p>Showcase and training on the latest adaptive sailing technology and equipment to ensure safe, independent sailing experiences.</p>
+                        <a href="#contact" class="btn" aria-label="Explore Adaptive Technology options">Explore Tech</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Get Involved Section -->
+        <section id="get-involved" class="get-involved">
+            <div class="section-container">
+                <h2 class="section-title">Get Involved</h2>
+                <div class="get-involved-grid">
+                    <div class="involvement-card">
+                        <div class="involvement-icon">🙋‍♀️</div>
+                        <h3>Volunteer</h3>
+                        <p>Join our team of dedicated volunteers and help make sailing accessible to everyone. No sailing experience required – we provide full training.</p>
+                        <a href="#contact" class="btn">Volunteer Now</a>
+                    </div>
+                    
+                    <div class="involvement-card">
+                        <div class="involvement-icon">❤️</div>
+                        <h3>Donate</h3>
+                        <p>Support our mission by making a donation. Your contribution helps us maintain equipment, train volunteers, and expand our programs.</p>
+                        <a href="#contact" class="btn">Donate Today</a>
+                    </div>
+                    
+                    <div class="involvement-card">
+                        <div class="involvement-icon">🤝</div>
+                        <h3>Partner</h3>
+                        <p>Become a corporate partner and help us reach more communities. Partner benefits include team-building opportunities and social impact visibility.</p>
+                        <a href="#contact" class="btn">Partner With Us</a>
+                    </div>
+                    
+                    <div class="involvement-card">
+                        <div class="involvement-icon">📢</div>
+                        <h3>Spread the Word</h3>
+                        <p>Help us raise awareness about adaptive sailing. Share our story on social media and tell your friends and family about our programs.</p>
+                        <a href="#contact" class="btn">Share Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <div class="section-container">
+                <h2 id="contact-heading" class="section-title">Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <address>
+                            <div class="contact-item">
+                                <span class="contact-icon" aria-hidden="true">📍</span>
+                                <div>
+                                    <strong>Address:</strong><br>
+                                    <span>Wesselsroad 12<br>
+                                    7708 Kenilworth<br>
+                                    Cape Town, South Africa</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon" aria-hidden="true">📞</span>
+                                <div>
+                                    <strong>Phone:</strong><br>
+                                    <a href="tel:+27712765502" aria-label="Call us at 0 7 1 2 7 6 5 5 0 2">+27 71 276 5502</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon" aria-hidden="true">✉️</span>
+                                <div>
+                                    <strong>Email:</strong><br>
+                                    <a href="mailto:sailing@sv14.org" aria-label="Send email to sailing at s v 14 dot org">sailing@sv14.org</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <span class="contact-icon" aria-hidden="true">⏰</span>
+                                <div>
+                                    <strong>Office Hours:</strong><br>
+                                    <time>Monday - Friday: 8:00 AM - 5:00 PM</time><br>
+                                    <time>Saturday: 9:00 AM - 2:00 PM</time>
+                                </div>
+                            </div>
+                        </address>
+                    </div>
+                    
+                    <form class="contact-form" novalidate aria-labelledby="form-heading">
+                        <h3 id="form-heading">Send Us a Message</h3>
+                        <div class="form-group">
+                            <label for="name" class="required">Full Name *</label>
+                            <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+                            <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address *</label>
+                            <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error email-help">
+                            <div id="email-help" class="help-text">We'll use this to respond to your message</div>
+                            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" aria-describedby="phone-help">
+                            <div id="phone-help" class="help-text">Optional - for urgent inquiries</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest">I'm interested in:</label>
+                            <select id="interest" name="interest" aria-describedby="interest-help">
+                                <option value="">Please select...</option>
+                                <option value="sailing">Learning to Sail</option>
+                                <option value="volunteering">Volunteering</option>
+                                <option value="donating">Making a Donation</option>
+                                <option value="partnership">Corporate Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div id="interest-help" class="help-text">This helps us direct your message to the right team</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="required">Message *</label>
+                            <textarea id="message" name="message" required aria-required="true" 
+                                     placeholder="Tell us how we can help you or how you'd like to get involved..." 
+                                     aria-describedby="message-error message-help"></textarea>
+                            <div id="message-help" class="help-text">Please include any specific accessibility needs or questions</div>
+                            <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
+                        </div>
+                        
+                        <!-- Honeypot field for spam protection -->
+                        <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        
+                        <button type="submit" class="btn" aria-describedby="submit-help">
+                            Send Message
+                        </button>
+                        <div id="submit-help" class="help-text">We typically respond within 24 hours</div>
+                        
+                        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <nav aria-label="Footer navigation">
+                <div class="footer-links">
+                    <a href="#home" aria-label="Go to home section">Home</a>
+                    <a href="#about" aria-label="Go to about section">About</a>
+                    <a href="#programs" aria-label="Go to programs section">Programs</a>
+                    <a href="#get-involved" aria-label="Go to get involved section">Get Involved</a>
+                    <a href="#contact" aria-label="Go to contact section">Contact</a>
+                    <a href="#" aria-label="View privacy policy">Privacy Policy</a>
+                </div>
+            </nav>
+            <p>&copy; 2024 Sailability South Africa. All rights reserved. Making sailing accessible to everyone.</p>
+            <p class="accessibility-statement">
+                <a href="#" aria-label="Read our accessibility statement">Accessibility Statement</a> | 
+                <a href="mailto:sailing@sv14.org" aria-label="Contact us about accessibility">Report Accessibility Issues</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Accessibility toolbar functionality
+        function toggleToolbar() {
+            const toolbar = document.querySelector('.accessibility-toolbar');
+            const isVisible = toolbar.classList.contains('show');
+            
+            if (isVisible) {
+                toolbar.classList.remove('show');
+                toolbar.setAttribute('aria-hidden', 'true');
+                document.querySelector('.accessibility-toggle').focus();
+            } else {
+                toolbar.classList.add('show');
+                toolbar.setAttribute('aria-hidden', 'false');
+                toolbar.querySelector('h3').focus();
+            }
+        }
+
+        function increaseFontSize() {
+            const body = document.body;
+            if (body.classList.contains('large-text')) {
+                body.classList.remove('large-text');
+                body.classList.add('extra-large-text');
+                announceToScreenReader('Text size increased to extra large');
+            } else if (!body.classList.contains('large-text')) {
+                body.classList.add('large-text');
+                announceToScreenReader('Text size increased to large');
+            }
+        }
+
+        function decreaseFontSize() {
+            const body = document.body;
+            if (body.classList.contains('extra-large-text')) {
+                body.classList.remove('extra-large-text');
+                body.classList.add('large-text');
+                announceToScreenReader('Text size decreased to large');
+            } else if (body.classList.contains('large-text')) {
+                body.classList.remove('large-text');
+                announceToScreenReader('Text size reset to normal');
+            }
+        }
+
+        function toggleHighContrast() {
+            const body = document.body;
+            if (body.classList.contains('high-contrast')) {
+                body.classList.remove('high-contrast');
+                announceToScreenReader('High contrast mode disabled');
+            } else {
+                body.classList.add('high-contrast');
+                announceToScreenReader('High contrast mode enabled');
+            }
+        }
+
+        function resetAccessibility() {
+            const body = document.body;
+            body.classList.remove('large-text', 'extra-large-text', 'high-contrast');
+            announceToScreenReader('All accessibility settings reset to default');
+        }
+
+        function announceToScreenReader(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.className = 'sr-only';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                document.body.removeChild(announcement);
+            }, 1000);
+        }
+
+        // Form validation and accessibility
+        function validateForm(form) {
+            let isValid = true;
+            const fields = form.querySelectorAll('[required]');
+            
+            fields.forEach(field => {
+                const errorDiv = document.getElementById(field.id + '-error');
+                if (!field.value.trim()) {
+                    showFieldError(field, errorDiv, `${field.labels[0].textContent.replace(' *', '')} is required`);
+                    isValid = false;
+                } else if (field.type === 'email' && !isValidEmail(field.value)) {
+                    showFieldError(field, errorDiv, 'Please enter a valid email address');
+                    isValid = false;
+                } else {
+                    hideFieldError(field, errorDiv);
+                }
+            });
+            
+            return isValid;
+        }
+
+        function showFieldError(field, errorDiv, message) {
+            field.classList.add('error');
+            field.setAttribute('aria-invalid', 'true');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+
+        function hideFieldError(field, errorDiv) {
+            field.classList.remove('error');
+            field.setAttribute('aria-invalid', 'false');
+            errorDiv.classList.remove('show');
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showFormStatus(type, message) {
+            const statusDiv = document.getElementById('form-status');
+            statusDiv.className = `form-status ${type}`;
+            statusDiv.textContent = message;
+            statusDiv.focus();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Accessibility toolbar toggle
+            document.querySelector('.accessibility-toggle').addEventListener('click', toggleToolbar);
+            
+            // Keyboard navigation for accessibility toolbar
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const toolbar = document.querySelector('.accessibility-toolbar');
+                    if (toolbar.classList.contains('show')) {
+                        toggleToolbar();
+                    }
+                }
+            });
+
+            // Form submission with validation
+            document.querySelector('.contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Check honeypot field
+                if (this.website.value) {
+                    return; // Silent fail for bots
+                }
+                
+                if (validateForm(this)) {
+                    // Simulate form submission
+                    showFormStatus('success', 'Thank you for your message! We\'ll get back to you within 24 hours.');
+                    this.reset();
+                    
+                    // Clear any remaining error states
+                    this.querySelectorAll('.error-message').forEach(error => {
+                        error.classList.remove('show');
+                    });
+                    this.querySelectorAll('[aria-invalid="true"]').forEach(field => {
+                        field.setAttribute('aria-invalid', 'false');
+                        field.classList.remove('error');
+                    });
+                } else {
+                    showFormStatus('error', 'Please correct the errors above and try again.');
+                }
+            });
+
+            // Real-time validation feedback
+            document.querySelectorAll('input[required], textarea[required]').forEach(field => {
+                field.addEventListener('blur', function() {
+                    const errorDiv = document.getElementById(this.id + '-error');
+                    if (!this.value.trim()) {
+                        showFieldError(this, errorDiv, `${this.labels[0].textContent.replace(' *', '')} is required`);
+                    } else if (this.type === 'email' && !isValidEmail(this.value)) {
+                        showFieldError(this, errorDiv, 'Please enter a valid email address');
+                    } else {
+                        hideFieldError(this, errorDiv);
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Set focus to target for keyboard users
+                    target.setAttribute('tabindex', '-1');
+                    target.focus();
+                    target.addEventListener('blur', function() {
+                        this.removeAttribute('tabindex');
+                    }, { once: true });
+                }
+            });
+        });
+
+        // Add active class to navigation based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Keyboard navigation improvements
+        document.addEventListener('keydown', function(e) {
+            // Alt + 1-5 for quick navigation
+            if (e.altKey && !e.ctrlKey && !e.shiftKey) {
+                const sections = ['home', 'about', 'programs', 'get-involved', 'contact'];
+                const key = parseInt(e.key);
+                if (key >= 1 && key <= 5) {
+                    e.preventDefault();
+                    const target = document.getElementById(sections[key - 1]);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        target.setAttribute('tabindex', '-1');
+                        target.focus();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
