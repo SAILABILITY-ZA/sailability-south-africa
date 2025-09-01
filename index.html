@@ -512,49 +512,22 @@
         }
 
         .about-image {
-            background: linear-gradient(to bottom, #87ceeb 0%, #4682b4 50%, #1e3a8a 100%);
             height: 400px;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 4rem;
-            position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        .sailing-scene {
-            text-align: center;
-            position: relative;
-            z-index: 2;
+        .sailing-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
         }
 
-        .mountains {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            filter: brightness(0.8);
-        }
-
-        .boats {
-            font-size: 2rem;
-            margin: 1rem 0;
-            letter-spacing: 1rem;
-        }
-
-        .water-waves {
-            font-size: 1.5rem;
-            opacity: 0.7;
-            margin-top: 1rem;
-        }
-
-        .location-text {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--white);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-top: 1rem;
-            font-family: 'Segoe UI', sans-serif;
+        .sailing-photo:hover {
+            transform: scale(1.05);
         }
 
         /* SV14 Partnership Section */
@@ -1068,13 +1041,8 @@
                         
                         <p>Whether you're looking to try sailing for the first time, develop competitive sailing skills, or simply enjoy recreational time on the water, Sailability South Africa welcomes you aboard.</p>
                     </div>
-                    <div class="about-image" role="img" aria-label="Illustration showing sailing boats on water with mountains in background representing Cape Town sailing">
-                        <div class="sailing-scene">
-                            <div class="mountains">🏔️</div>
-                            <div class="boats">⛵ ⛵ ⛵</div>
-                            <div class="water-waves">🌊</div>
-                            <div class="location-text">Cape Town</div>
-                        </div>
+                    <div class="about-image" role="img" aria-label="SV14 accessible sailing boats on the water with sailors participating in adaptive sailing activities">
+                        <img src="sv14-sailing.jpg" alt="Two SV14 boats sailing on the water with adaptive equipment and sailors with disabilities participating in sailing activities. The boats have distinctive white sails with 'SV' markings and are shown against a scenic backdrop." class="sailing-photo">
                     </div>
                 </div>
             </div>
