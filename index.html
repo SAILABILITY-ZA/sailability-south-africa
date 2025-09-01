@@ -140,10 +140,20 @@
             font-size: 26px;
         }
 
-        /* High contrast mode */
+        /* High contrast mode - FIXED VERSION */
         body.high-contrast {
-            background: #000000;
-            color: #ffffff;
+            background: #000000 !important;
+            color: #ffffff !important;
+        }
+
+        body.high-contrast * {
+            color: #ffffff !important;
+            background-color: transparent !important;
+        }
+
+        body.high-contrast header {
+            background: #000000 !important;
+            border-bottom: 2px solid #ffffff;
         }
 
         body.high-contrast .hero {
@@ -153,37 +163,121 @@
         body.high-contrast .hero-content {
             background: rgba(0, 0, 0, 0.9) !important;
             border: 2px solid #ffffff;
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .hero h1,
+        body.high-contrast .hero p {
+            color: #ffffff !important;
         }
 
         body.high-contrast .btn {
-            background: #ffff00;
-            color: #000000;
+            background: #ffff00 !important;
+            color: #000000 !important;
+            border: 2px solid #ffffff;
+        }
+
+        body.high-contrast .btn-secondary {
+            background: #000000 !important;
+            color: #ffffff !important;
             border: 2px solid #ffffff;
         }
 
         body.high-contrast .nav-links a {
-            color: #ffffff;
+            color: #ffffff !important;
         }
 
         body.high-contrast .section-title {
-            color: #ffffff;
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .about,
+        body.high-contrast .contact,
+        body.high-contrast .programs,
+        body.high-contrast .get-involved {
+            background: #000000 !important;
+        }
+
+        body.high-contrast .about-text,
+        body.high-contrast .about-text p,
+        body.high-contrast .about-text strong {
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .program-card,
+        body.high-contrast .involvement-card,
+        body.high-contrast .contact-info,
+        body.high-contrast .contact-form {
+            background: #000000 !important;
+            border: 2px solid #ffffff;
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .program-card h3,
+        body.high-contrast .program-card p,
+        body.high-contrast .involvement-card h3,
+        body.high-contrast .involvement-card p {
+            color: #ffffff !important;
         }
 
         body.high-contrast .sv14-partnership {
-            background: #000000;
+            background: #000000 !important;
             border-color: #ffffff;
         }
 
         body.high-contrast .partnership-text {
-            color: #ffffff;
+            color: #ffffff !important;
         }
 
         body.high-contrast .about-image {
-            background: #000080;
+            background: #000080 !important;
         }
 
         body.high-contrast .location-text {
-            color: #ffffff;
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .contact-item strong,
+        body.high-contrast .contact-item span,
+        body.high-contrast address {
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .form-group label {
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .form-group input,
+        body.high-contrast .form-group textarea,
+        body.high-contrast .form-group select {
+            background: #000000 !important;
+            color: #ffffff !important;
+            border: 2px solid #ffffff;
+        }
+
+        body.high-contrast .help-text {
+            color: #ffffff !important;
+        }
+
+        body.high-contrast footer {
+            background: #000000 !important;
+            border-top: 2px solid #ffffff;
+        }
+
+        body.high-contrast .footer-links a,
+        body.high-contrast .accessibility-statement,
+        body.high-contrast .accessibility-statement a {
+            color: #ffffff !important;
+        }
+
+        body.high-contrast .contact-info a {
+            color: #ffff00 !important;
+            text-decoration: underline;
+        }
+
+        body.high-contrast .about-text a {
+            color: #ffff00 !important;
+            text-decoration: underline;
         }
 
         /* Header and Navigation */
@@ -944,489 +1038,4 @@
             <div class="hero-content">
                 <h1 id="hero-heading">Sailing for Everyone</h1>
                 <p class="hero-description">Empowering people with disabilities to experience the freedom and joy of sailing on South Africa's beautiful waters.</p>
-                <div class="cta-buttons" role="group" aria-label="Main action buttons">
-                    <a href="#programs" class="btn" aria-describedby="programs-desc">
-                        Explore Programs
-                        <span id="programs-desc" class="sr-only">Learn about our accessible sailing programs</span>
-                    </a>
-                    <a href="#get-involved" class="btn btn-secondary" aria-describedby="involve-desc">
-                        Get Involved
-                        <span id="involve-desc" class="sr-only">Find ways to volunteer or support our mission</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about" aria-labelledby="about-heading">
-            <div class="section-container">
-                <h2 id="about-heading" class="section-title">About Sailability South Africa</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p><strong>Sailability South Africa</strong> is dedicated to providing safe, enjoyable, and accessible sailing experiences for people with physical, intellectual, and sensory disabilities. Founded on the belief that sailing should be available to everyone, we work to break down barriers and create opportunities for individuals to experience the transformative power of being on the water.</p>
-                        
-                        <p>Our specially adapted boats and trained volunteers ensure that participants can sail safely while building confidence, developing new skills, and forming lasting friendships. We sail with SV14 boats, specifically designed for accessible sailing - you can learn more about these innovative vessels at <a href="https://www.sv14.org" target="_blank" rel="noopener noreferrer" aria-label="Visit SV14 website (opens in new tab)">www.sv14.org</a>. For now we only sail at Milnerton Aquatic Club Cape Town, but we are working on additional launching spots in South Africa.</p>
-                        
-                        <div class="sv14-partnership">
-                            <img src="sv14-logo.png" alt="SV14 logo - Sailing for people with disabilities" class="sv14-logo">
-                            <p class="partnership-text">We're proud to use SV14 boats - purpose-built for accessible sailing</p>
-                        </div>
-                        
-                        <p>Whether you're looking to try sailing for the first time, develop competitive sailing skills, or simply enjoy recreational time on the water, Sailability South Africa welcomes you aboard.</p>
-                    </div>
-                    <div class="about-image" role="img" aria-label="Illustration showing sailing boats on water with mountains in background representing Cape Town sailing">
-                        <div class="sailing-scene">
-                            <div class="mountains">🏔️</div>
-                            <div class="boats">⛵ ⛵ ⛵</div>
-                            <div class="water-waves">🌊</div>
-                            <div class="location-text">Cape Town</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Programs Section -->
-        <section id="programs" class="programs" aria-labelledby="programs-heading">
-            <div class="section-container">
-                <h2 id="programs-heading" class="section-title">Our Programs</h2>
-                <div class="programs-grid" role="list" aria-label="Available sailing programs">
-                    <article class="program-card" role="listitem">
-                        <h3>Learn to Sail</h3>
-                        <p>Beginner-friendly sailing lessons designed specifically for people with disabilities. Our certified instructors provide personalized guidance using specially adapted equipment.</p>
-                        <a href="#contact" class="btn" aria-label="Learn more about Learn to Sail program">Learn More</a>
-                    </article>
-                    
-                    <article class="program-card" role="listitem">
-                        <h3>Recreation Sailing</h3>
-                        <p>Regular recreational sailing sessions for all skill levels. Enjoy the therapeutic benefits of being on the water while socializing with fellow sailing enthusiasts.</p>
-                        <a href="#contact" class="btn" aria-label="Join our Recreation Sailing program">Join Today</a>
-                    </article>
-                    
-                    <article class="program-card" role="listitem">
-                        <h3>Competitive Sailing</h3>
-                        <p>Training and competition opportunities for sailors looking to develop racing skills and participate in national and international sailing competitions.</p>
-                        <a href="#contact" class="btn" aria-label="Get started with Competitive Sailing">Get Started</a>
-                    </article>
-                    
-                    <article class="program-card" role="listitem">
-                        <h3>Youth Development</h3>
-                        <p>Specialized programs for young people with disabilities, focusing on skill development, confidence building, and leadership opportunities.</p>
-                        <a href="#contact" class="btn" aria-label="Discover more about Youth Development program">Discover More</a>
-                    </article>
-                    
-                    <article class="program-card" role="listitem">
-                        <h3>Family Sailing</h3>
-                        <p>Inclusive sailing experiences designed for families, allowing family members to enjoy the water together regardless of ability levels.</p>
-                        <a href="#contact" class="btn" aria-label="Book a Family Sailing session">Book Session</a>
-                    </article>
-                    
-                    <article class="program-card" role="listitem">
-                        <h3>Adaptive Technology</h3>
-                        <p>Showcase and training on the latest adaptive sailing technology and equipment to ensure safe, independent sailing experiences.</p>
-                        <a href="#contact" class="btn" aria-label="Explore Adaptive Technology options">Explore Tech</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Get Involved Section -->
-        <section id="get-involved" class="get-involved" aria-labelledby="get-involved-heading">
-            <div class="section-container">
-                <h2 id="get-involved-heading" class="section-title">Get Involved</h2>
-                <div class="get-involved-grid">
-                    <div class="involvement-card">
-                        <div class="involvement-icon">🙋‍♀️</div>
-                        <h3>Volunteer</h3>
-                        <p>Join our team of dedicated volunteers and help make sailing accessible to everyone. No sailing experience required – we provide full training.</p>
-                        <a href="#contact" class="btn">Volunteer Now</a>
-                    </div>
-                    
-                    <div class="involvement-card">
-                        <div class="involvement-icon">❤️</div>
-                        <h3>Donate</h3>
-                        <p>Support our mission by making a donation. Your contribution helps us maintain equipment, train volunteers, and expand our programs.</p>
-                        <a href="#contact" class="btn">Donate Today</a>
-                    </div>
-                    
-                    <div class="involvement-card">
-                        <div class="involvement-icon">🤝</div>
-                        <h3>Partner</h3>
-                        <p>Become a corporate partner and help us reach more communities. Partner benefits include team-building opportunities and social impact visibility.</p>
-                        <a href="#contact" class="btn">Partner With Us</a>
-                    </div>
-                    
-                    <div class="involvement-card">
-                        <div class="involvement-icon">📢</div>
-                        <h3>Spread the Word</h3>
-                        <p>Help us raise awareness about adaptive sailing. Share our story on social media and tell your friends and family about our programs.</p>
-                        <a href="#contact" class="btn">Share Our Story</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact" aria-labelledby="contact-heading">
-            <div class="section-container">
-                <h2 id="contact-heading" class="section-title">Contact Us</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Get in Touch</h3>
-                        <address>
-                            <div class="contact-item">
-                                <span class="contact-icon" aria-hidden="true">📍</span>
-                                <div>
-                                    <strong>Address:</strong><br>
-                                    <span>Wesselsroad 12<br>
-                                    7708 Kenilworth<br>
-                                    Cape Town, South Africa</span>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <span class="contact-icon" aria-hidden="true">📞</span>
-                                <div>
-                                    <strong>Phone:</strong><br>
-                                    <a href="tel:+27712765502" aria-label="Call us at 0 7 1 2 7 6 5 5 0 2">+27 71 276 5502</a>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <span class="contact-icon" aria-hidden="true">✉️</span>
-                                <div>
-                                    <strong>Email:</strong><br>
-                                    <a href="mailto:sailing@sv14.org" aria-label="Send email to sailing at s v 14 dot org">sailing@sv14.org</a>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <span class="contact-icon" aria-hidden="true">⏰</span>
-                                <div>
-                                    <strong>Office Hours:</strong><br>
-                                    <time>Monday - Friday: 8:00 AM - 5:00 PM</time><br>
-                                    <time>Saturday: 9:00 AM - 2:00 PM</time>
-                                </div>
-                            </div>
-                        </address>
-                    </div>
-                    
-                    <form class="contact-form" novalidate aria-labelledby="form-heading">
-                        <h3 id="form-heading">Send Us a Message</h3>
-                        <div class="form-group">
-                            <label for="name" class="required">Full Name *</label>
-                            <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
-                            <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="required">Email Address *</label>
-                            <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error email-help">
-                            <div id="email-help" class="help-text">We'll use this to respond to your message</div>
-                            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" aria-describedby="phone-help">
-                            <div id="phone-help" class="help-text">Optional - for urgent inquiries</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="interest">I'm interested in:</label>
-                            <select id="interest" name="interest" aria-describedby="interest-help">
-                                <option value="">Please select...</option>
-                                <option value="sailing">Learning to Sail</option>
-                                <option value="volunteering">Volunteering</option>
-                                <option value="donating">Making a Donation</option>
-                                <option value="partnership">Corporate Partnership</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <div id="interest-help" class="help-text">This helps us direct your message to the right team</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="required">Message *</label>
-                            <textarea id="message" name="message" required aria-required="true" 
-                                     placeholder="Tell us how we can help you or how you'd like to get involved..." 
-                                     aria-describedby="message-error message-help"></textarea>
-                            <div id="message-help" class="help-text">Please include any specific accessibility needs or questions</div>
-                            <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
-                        </div>
-                        
-                        <!-- Honeypot field for spam protection -->
-                        <div style="position: absolute; left: -9999px;" aria-hidden="true">
-                            <input type="text" name="website" tabindex="-1" autocomplete="off">
-                        </div>
-                        
-                        <button type="submit" class="btn" aria-describedby="submit-help">
-                            Send Message
-                        </button>
-                        <div id="submit-help" class="help-text">We typically respond within 24 hours</div>
-                        
-                        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="footer-content">
-            <nav aria-label="Footer navigation">
-                <div class="footer-links">
-                    <a href="#home" aria-label="Go to home section">Home</a>
-                    <a href="#about" aria-label="Go to about section">About</a>
-                    <a href="#programs" aria-label="Go to programs section">Programs</a>
-                    <a href="#get-involved" aria-label="Go to get involved section">Get Involved</a>
-                    <a href="#contact" aria-label="Go to contact section">Contact</a>
-                    <a href="#" aria-label="View privacy policy">Privacy Policy</a>
-                </div>
-            </nav>
-            <p>&copy; 2024 Sailability South Africa. All rights reserved. Making sailing accessible to everyone.</p>
-            <p class="accessibility-statement">
-                <a href="#" aria-label="Read our accessibility statement">Accessibility Statement</a> | 
-                <a href="mailto:sailing@sv14.org" aria-label="Contact us about accessibility">Report Accessibility Issues</a>
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Accessibility toolbar functionality
-        function toggleToolbar() {
-            const toolbar = document.querySelector('.accessibility-toolbar');
-            const isVisible = toolbar.classList.contains('show');
-            
-            if (isVisible) {
-                toolbar.classList.remove('show');
-                toolbar.setAttribute('aria-hidden', 'true');
-                document.querySelector('.accessibility-toggle').focus();
-            } else {
-                toolbar.classList.add('show');
-                toolbar.setAttribute('aria-hidden', 'false');
-                toolbar.querySelector('h3').focus();
-            }
-        }
-
-        function increaseFontSize() {
-            const body = document.body;
-            if (body.classList.contains('large-text')) {
-                body.classList.remove('large-text');
-                body.classList.add('extra-large-text');
-                announceToScreenReader('Text size increased to extra large');
-            } else if (!body.classList.contains('large-text')) {
-                body.classList.add('large-text');
-                announceToScreenReader('Text size increased to large');
-            }
-        }
-
-        function decreaseFontSize() {
-            const body = document.body;
-            if (body.classList.contains('extra-large-text')) {
-                body.classList.remove('extra-large-text');
-                body.classList.add('large-text');
-                announceToScreenReader('Text size decreased to large');
-            } else if (body.classList.contains('large-text')) {
-                body.classList.remove('large-text');
-                announceToScreenReader('Text size reset to normal');
-            }
-        }
-
-        function toggleHighContrast() {
-            const body = document.body;
-            if (body.classList.contains('high-contrast')) {
-                body.classList.remove('high-contrast');
-                announceToScreenReader('High contrast mode disabled');
-            } else {
-                body.classList.add('high-contrast');
-                announceToScreenReader('High contrast mode enabled');
-            }
-        }
-
-        function resetAccessibility() {
-            const body = document.body;
-            body.classList.remove('large-text', 'extra-large-text', 'high-contrast');
-            announceToScreenReader('All accessibility settings reset to default');
-        }
-
-        function announceToScreenReader(message) {
-            const announcement = document.createElement('div');
-            announcement.setAttribute('aria-live', 'polite');
-            announcement.setAttribute('aria-atomic', 'true');
-            announcement.className = 'sr-only';
-            announcement.textContent = message;
-            document.body.appendChild(announcement);
-            
-            setTimeout(() => {
-                document.body.removeChild(announcement);
-            }, 1000);
-        }
-
-        // Form validation and accessibility
-        function validateForm(form) {
-            let isValid = true;
-            const fields = form.querySelectorAll('[required]');
-            
-            fields.forEach(field => {
-                const errorDiv = document.getElementById(field.id + '-error');
-                if (!field.value.trim()) {
-                    showFieldError(field, errorDiv, `${field.labels[0].textContent.replace(' *', '')} is required`);
-                    isValid = false;
-                } else if (field.type === 'email' && !isValidEmail(field.value)) {
-                    showFieldError(field, errorDiv, 'Please enter a valid email address');
-                    isValid = false;
-                } else {
-                    hideFieldError(field, errorDiv);
-                }
-            });
-            
-            return isValid;
-        }
-
-        function showFieldError(field, errorDiv, message) {
-            field.classList.add('error');
-            field.setAttribute('aria-invalid', 'true');
-            errorDiv.textContent = message;
-            errorDiv.classList.add('show');
-        }
-
-        function hideFieldError(field, errorDiv) {
-            field.classList.remove('error');
-            field.setAttribute('aria-invalid', 'false');
-            errorDiv.classList.remove('show');
-        }
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        function showFormStatus(type, message) {
-            const statusDiv = document.getElementById('form-status');
-            statusDiv.className = `form-status ${type}`;
-            statusDiv.textContent = message;
-            statusDiv.focus();
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Accessibility toolbar toggle
-            document.querySelector('.accessibility-toggle').addEventListener('click', toggleToolbar);
-            
-            // Keyboard navigation for accessibility toolbar
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    const toolbar = document.querySelector('.accessibility-toolbar');
-                    if (toolbar.classList.contains('show')) {
-                        toggleToolbar();
-                    }
-                }
-            });
-
-            // Form submission with validation
-            document.querySelector('.contact-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Check honeypot field
-                if (this.website.value) {
-                    return; // Silent fail for bots
-                }
-                
-                if (validateForm(this)) {
-                    // Simulate form submission
-                    showFormStatus('success', 'Thank you for your message! We\'ll get back to you within 24 hours.');
-                    this.reset();
-                    
-                    // Clear any remaining error states
-                    this.querySelectorAll('.error-message').forEach(error => {
-                        error.classList.remove('show');
-                    });
-                    this.querySelectorAll('[aria-invalid="true"]').forEach(field => {
-                        field.setAttribute('aria-invalid', 'false');
-                        field.classList.remove('error');
-                    });
-                } else {
-                    showFormStatus('error', 'Please correct the errors above and try again.');
-                }
-            });
-
-            // Real-time validation feedback
-            document.querySelectorAll('input[required], textarea[required]').forEach(field => {
-                field.addEventListener('blur', function() {
-                    const errorDiv = document.getElementById(this.id + '-error');
-                    if (!this.value.trim()) {
-                        showFieldError(this, errorDiv, `${this.labels[0].textContent.replace(' *', '')} is required`);
-                    } else if (this.type === 'email' && !isValidEmail(this.value)) {
-                        showFieldError(this, errorDiv, 'Please enter a valid email address');
-                    } else {
-                        hideFieldError(this, errorDiv);
-                    }
-                });
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Set focus to target for keyboard users
-                    target.setAttribute('tabindex', '-1');
-                    target.focus();
-                    target.addEventListener('blur', function() {
-                        this.removeAttribute('tabindex');
-                    }, { once: true });
-                }
-            });
-        });
-
-        // Add active class to navigation based on scroll position
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (pageYOffset >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Keyboard navigation improvements
-        document.addEventListener('keydown', function(e) {
-            // Alt + 1-5 for quick navigation
-            if (e.altKey && !e.ctrlKey && !e.shiftKey) {
-                const sections = ['home', 'about', 'programs', 'get-involved', 'contact'];
-                const key = parseInt(e.key);
-                if (key >= 1 && key <= 5) {
-                    e.preventDefault();
-                    const target = document.getElementById(sections[key - 1]);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                        target.setAttribute('tabindex', '-1');
-                        target.focus();
-                    }
-                }
-            }
-        });
-    </script>
-</body>
-</html>
-
-
+                <div class="cta
