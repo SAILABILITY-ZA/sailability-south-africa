@@ -1173,7 +1173,7 @@
                         </address>
                     </div>
                     
-                    <form class="contact-form" novalidate aria-labelledby="form-heading">
+                    <form class="contact-form" action="https://formspree.io/f/movnngog" method="POST" aria-labelledby="form-heading">
                         <h3 id="form-heading">Send Us a Message</h3>
                         <div class="form-group">
                             <label for="name" class="required">Full Name</label>
@@ -1386,19 +1386,33 @@
                 }
             });
 
-            // Form submission with validation
+            // Form submission with Formspree
             document.querySelector('.contact-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
                 // Check honeypot field
                 if (this.website.value) {
+                    e.preventDefault();
                     return; // Silent fail for bots
                 }
                 
-                if (validateForm(this)) {
-                    // Simulate form submission
+                if (!validateForm(this)) {
+                    e.preventDefault();
+                    showFormStatus('error', 'Please correct the errors above and try again.');
+                    return;
+                }
+                
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Let the form submit naturally to Formspree
+                // Formspree will handle the redirect or we can catch the response
+                setTimeout(() => {
                     showFormStatus('success', 'Thank you for your message! We\'ll get back to you within 24 hours.');
                     this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                     
                     // Clear any remaining error states
                     this.querySelectorAll('.error-message').forEach(error => {
@@ -1408,9 +1422,7 @@
                         field.setAttribute('aria-invalid', 'false');
                         field.classList.remove('error');
                     });
-                } else {
-                    showFormStatus('error', 'Please correct the errors above and try again.');
-                }
+                }, 2000);
             });
 
             // Real-time validation feedback
