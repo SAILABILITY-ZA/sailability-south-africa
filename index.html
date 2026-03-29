@@ -3,7 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sailability South Africa - Sailing for Everyone</title>
+
+    <!-- SEO: Page title — descriptive and keyword-rich -->
+    <title>Sailability South Africa — Inclusive &amp; Adaptive Sailing for People with Disabilities</title>
+
+    <!-- SEO: Meta description — shown in Google search results -->
+    <meta name="description" content="Sailability South Africa provides adaptive and inclusive sailing for people with physical, intellectual and sensory disabilities. Based in Cape Town, we sail SV14 boats at Milnerton Aquatic Club. Join us on the water.">
+
+    <!-- SEO: Keywords -->
+    <meta name="keywords" content="sailability south africa, adaptive sailing, inclusive sailing, disabled sailing cape town, wheelchair sailing south africa, sailing for disabled people, SV14 sailing, accessible sailing, milnerton aquatic club sailing, disability sport cape town">
+
+    <!-- SEO: Author and robots -->
+    <meta name="author" content="Sailability South Africa">
+    <meta name="robots" content="index, follow">
+
+    <!-- SEO: Canonical URL — prevents duplicate content issues -->
+    <link rel="canonical" href="https://sailabilityza.co.za/">
+
+    <!-- SEO: Open Graph — controls how the page appears when shared on Facebook, WhatsApp, LinkedIn -->
+    <meta property="og:title" content="Sailability South Africa — Inclusive Sailing for Everyone">
+    <meta property="og:description" content="Adaptive sailing programs for people with disabilities in Cape Town, South Africa. We use SV14 boats at Milnerton Aquatic Club. Learn to sail, recreate, or compete.">
+    <meta property="og:url" content="https://sailabilityza.co.za/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_ZA">
+    <meta property="og:site_name" content="Sailability South Africa">
+    <meta property="og:image" content="https://sailabilityza.co.za/sv14-sailing.jpg">
+    <meta property="og:image:alt" content="SV14 adaptive sailing boats on the water at Milnerton, Cape Town">
+
+    <!-- SEO: Twitter/X card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sailability South Africa — Inclusive Sailing for Everyone">
+    <meta name="twitter:description" content="Adaptive sailing for people with disabilities in Cape Town. SV14 boats at Milnerton Aquatic Club.">
+    <meta name="twitter:image" content="https://sailabilityza.co.za/sv14-sailing.jpg">
+
+    <!-- SEO: Structured data — tells Google exactly what this organisation is -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsOrganization",
+      "name": "Sailability South Africa",
+      "url": "https://sailabilityza.co.za",
+      "logo": "https://sailabilityza.co.za/SailabilityZA.png",
+      "image": "https://sailabilityza.co.za/sv14-sailing.jpg",
+      "description": "Sailability South Africa provides adaptive and inclusive sailing experiences for people with physical, intellectual and sensory disabilities. We sail SV14 boats at Milnerton Aquatic Club in Cape Town.",
+      "sport": "Sailing",
+      "telephone": "+27712765502",
+      "email": "sailing@sv14.org",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Wesselsroad 12",
+        "addressLocality": "Kenilworth",
+        "postalCode": "7708",
+        "addressRegion": "Western Cape",
+        "addressCountry": "ZA"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Milnerton Aquatic Club",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Milnerton",
+          "addressRegion": "Western Cape",
+          "addressCountry": "ZA"
+        }
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      "sameAs": [
+        "https://www.sv14.org"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+27712765502",
+        "contactType": "general",
+        "email": "sailing@sv14.org",
+        "availableLanguage": "English"
+      }
+    }
+    </script>
+
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -374,7 +454,7 @@
             margin-top: 80px;
         }
 
-        /* Hero Section - WITH YOUR SAILING PHOTO */
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(30, 58, 138, 0.4), rgba(59, 130, 246, 0.4)), 
                         url('sailing-photo.jpg') center/cover no-repeat;
@@ -872,7 +952,6 @@
                 height: 40px;
             }
 
-            /* Improved touch targets for mobile */
             .btn {
                 min-height: 48px;
                 min-width: 48px;
@@ -897,7 +976,6 @@
                 width: auto;
             }
 
-            /* Larger text on mobile for better readability */
             body {
                 font-size: 19px;
                 line-height: 1.9;
@@ -907,12 +985,11 @@
                 padding: 1rem;
             }
 
-            /* Form improvements for mobile */
             .form-group input,
             .form-group textarea,
             .form-group select {
                 min-height: 48px;
-                font-size: 16px; /* Prevents zoom on iOS */
+                font-size: 16px;
             }
 
             .sailing-scene {
@@ -954,7 +1031,6 @@
             }
         }
 
-        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -963,7 +1039,6 @@
             }
         }
 
-        /* Screen reader only content */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -1027,8 +1102,8 @@
         <!-- Hero Section -->
         <section id="home" class="hero" aria-labelledby="hero-heading" role="img" aria-label="SV14 accessible sailing boats on the water with Cape Town's Table Mountain in the background">
             <div class="hero-content">
-                <h1 id="hero-heading">Sailing for Everyone</h1>
-                <p class="hero-description">Empowering people with disabilities to experience the freedom and joy of sailing on South Africa's beautiful waters.</p>
+                <h1 id="hero-heading">Adaptive Sailing for People with Disabilities in South Africa</h1>
+                <p class="hero-description">Empowering people with physical, intellectual and sensory disabilities to experience the freedom and joy of sailing on South Africa's beautiful waters. Based at Milnerton Aquatic Club, Cape Town.</p>
                 <div class="cta-buttons" role="group" aria-label="Main action buttons">
                     <a href="#programs" class="btn" aria-describedby="programs-desc">
                         Explore Programs
@@ -1069,7 +1144,7 @@
         <!-- Programs Section -->
         <section id="programs" class="programs" aria-labelledby="programs-heading">
             <div class="section-container">
-                <h2 id="programs-heading" class="section-title">Our Programs</h2>
+                <h2 id="programs-heading" class="section-title">Our Adaptive Sailing Programs</h2>
                 <div class="programs-grid" role="list" aria-label="Available sailing programs">
                     <article class="program-card" role="listitem">
                         <h3>Learn to Sail</h3>
@@ -1264,7 +1339,7 @@
                     <a href="#" aria-label="View privacy policy">Privacy Policy</a>
                 </div>
             </nav>
-            <p>&copy; 2024 Sailability South Africa. All rights reserved. Making sailing accessible to everyone.</p>
+            <p>&copy; 2025 Sailability South Africa. All rights reserved. Making sailing accessible to everyone.</p>
             <p class="accessibility-statement">
                 <a href="#" aria-label="Read our accessibility statement">Accessibility Statement</a> | 
                 <a href="mailto:sailing@sv14.org" aria-label="Contact us about accessibility">Report Accessibility Issues</a>
@@ -1343,7 +1418,6 @@
             }, 1000);
         }
 
-        // Form validation and accessibility
         function validateForm(form) {
             let isValid = true;
             const fields = form.querySelectorAll('[required]');
@@ -1389,12 +1463,9 @@
             statusDiv.focus();
         }
 
-        // Event listeners
         document.addEventListener('DOMContentLoaded', function() {
-            // Accessibility toolbar toggle
             document.querySelector('.accessibility-toggle').addEventListener('click', toggleToolbar);
             
-            // Keyboard navigation for accessibility toolbar
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     const toolbar = document.querySelector('.accessibility-toolbar');
@@ -1404,12 +1475,10 @@
                 }
             });
 
-            // Form submission with Formspree
             document.querySelector('.contact-form').addEventListener('submit', function(e) {
-                // Check honeypot field
                 if (this.website.value) {
                     e.preventDefault();
-                    return; // Silent fail for bots
+                    return;
                 }
                 
                 if (!validateForm(this)) {
@@ -1418,21 +1487,17 @@
                     return;
                 }
                 
-                // Show loading state
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
                 submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
                 
-                // Let the form submit naturally to Formspree
-                // Formspree will handle the redirect or we can catch the response
                 setTimeout(() => {
                     showFormStatus('success', 'Thank you for your message! We\'ll get back to you within 24 hours.');
                     this.reset();
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                     
-                    // Clear any remaining error states
                     this.querySelectorAll('.error-message').forEach(error => {
                         error.classList.remove('show');
                     });
@@ -1443,7 +1508,6 @@
                 }, 2000);
             });
 
-            // Real-time validation feedback
             document.querySelectorAll('input[required], textarea[required]').forEach(field => {
                 field.addEventListener('blur', function() {
                     const errorDiv = document.getElementById(this.id + '-error');
@@ -1458,7 +1522,6 @@
             });
         });
 
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1469,7 +1532,6 @@
                         block: 'start'
                     });
                     
-                    // Set focus to target for keyboard users
                     target.setAttribute('tabindex', '-1');
                     target.focus();
                     target.addEventListener('blur', function() {
@@ -1479,7 +1541,6 @@
             });
         });
 
-        // Add active class to navigation based on scroll position
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -1500,9 +1561,7 @@
             });
         });
 
-        // Keyboard navigation improvements
         document.addEventListener('keydown', function(e) {
-            // Alt + 1-5 for quick navigation
             if (e.altKey && !e.ctrlKey && !e.shiftKey) {
                 const sections = ['home', 'about', 'programs', 'get-involved', 'contact'];
                 const key = parseInt(e.key);
